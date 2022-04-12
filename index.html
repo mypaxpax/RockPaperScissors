@@ -1,0 +1,42 @@
+<script>
+
+    const cpuSelection = computerPlay();
+    const playerSelection = prompt(("Pick your hand: "));
+    let playerWin = 0;
+
+    function computerPlay() {
+        const picks = ["Rock", "Paper", "Scissors"];
+        let randomPick = picks[Math.floor(Math.random() * picks.length)];
+        return randomPick;
+    }
+
+    function playRound(playerSelection, computerSelection) {
+        if (playerSelection == "Rock" && cpuSelection == "Scissors") {
+            ++playerWin;
+            console.log(`WIN! Player picked ${playerSelection} and CPU picked ${cpuSelection}`);
+        }   else if (playerSelection == "Scissors" && cpuSelection == "Paper") {
+            console.log(`WIN! Player picked ${playerSelection} and CPU picked ${cpuSelection}`);
+            ++playerWin;
+        }   else if (playerSelection == "Paper" && cpuSelection == "Rock") {
+            console.log(`WIN! Player picked ${playerSelection} and CPU picked ${cpuSelection}`);
+            ++playerWin;
+        }   else if (playerSelection === cpuSelection) {
+            console.log(`Draw! Player picked ${playerSelection} and CPU picked ${cpuSelection}`);
+        }   else {
+            --playerWin;
+            console.log(`Lost! Player picked ${playerSelection} and CPU picked ${cpuSelection}`);
+        }
+        console.log(playerWin);
+    }   
+    playRound(playerSelection, cpuSelection);
+
+    function game() {
+
+
+    }
+
+</script>
+
+rock > Scissors
+Scissors > Paper
+paper > rock

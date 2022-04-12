@@ -1,5 +1,8 @@
 <script>
 
+    let cpuWin = 0;
+    let playerWin = 0;
+
     function computerPlay() {
         const picks = ["Rock", "Paper", "Scissors"];
         let randomPick = picks[Math.floor(Math.random() * picks.length)];
@@ -8,32 +11,41 @@
 
     function playRound(playerSelection, computerSelection) {
         if (playerSelection == "Rock" && computerSelection == "Scissors") {
+            ++playerWin;
             console.log(`WIN! Player picked ${playerSelection} and CPU picked ${computerSelection}`);     
         }   else if (playerSelection == "Scissors" && computerSelection == "Paper") {
+            ++playerWin;
             console.log(`WIN! Player picked ${playerSelection} and CPU picked ${computerSelection}`);
         }   else if (playerSelection == "Paper" && computerSelection == "Rock") {
+            ++playerWin;
             console.log(`WIN! Player picked ${playerSelection} and CPU picked ${computerSelection}`);
         }   else if (playerSelection === computerSelection) {
             console.log(`Draw! Player picked ${playerSelection} and CPU picked ${computerSelection}`);
         }   else {
+            ++cpuWin;
             console.log(`Lost! Player picked ${playerSelection} and CPU picked ${computerSelection}`);
         }
     } 
 
     function game() {
         for (let rounds = 0; rounds < 5; rounds++) {
-            let computerSelection = computerPlay();
             const playerSelection = prompt("Pick your hand: ");
+            const computerSelection = computerPlay();
             if (rounds < 5 ){
                 playRound(playerSelection, computerSelection);
+                console.log(`Player score: ${playerWin}`);
+                console.log(`Computer score: ${cpuWin}`);
             }
         }
     }
 
     game();
+    
+    if (playerWin > cpuWin){
+        console.log("You won! POG");
+    }   else {
+        console.log("Looks like you lost lmao");
+    }
 
 </script>
 
-rock > Scissors
-Scissors > Paper
-paper > rock

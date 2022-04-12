@@ -1,12 +1,11 @@
 <script>
-
     let cpuWin = 0;
     let playerWin = 0;
 
     function computerPlay() {
         const picks = ["Rock", "Paper", "Scissors"];
         let randomPick = picks[Math.floor(Math.random() * picks.length)];
-        return randomPick;
+        return randomPick.toLowerCase();
     }
 
     function playRound(playerSelection, computerSelection) {
@@ -19,7 +18,7 @@
         }   else if (playerSelection == "Paper" && computerSelection == "Rock") {
             ++playerWin;
             console.log(`WIN! Player picked ${playerSelection} and CPU picked ${computerSelection}`);
-        }   else if (playerSelection === computerSelection) {
+        }   else if (playerSelection == computerSelection) {
             console.log(`Draw! Player picked ${playerSelection} and CPU picked ${computerSelection}`);
         }   else {
             ++cpuWin;
@@ -29,7 +28,7 @@
 
     function game() {
         for (let rounds = 0; rounds < 5; rounds++) {
-            const playerSelection = prompt("Pick your hand: ");
+            const playerSelection = prompt("Make your pick: ").toLowerCase();
             const computerSelection = computerPlay();
             if (rounds < 5 ){
                 playRound(playerSelection, computerSelection);
@@ -40,7 +39,7 @@
     }
 
     game();
-    
+
     if (playerWin > cpuWin){
         console.log("You won! POG");
     }   else {

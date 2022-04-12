@@ -3,19 +3,19 @@
     let playerWin = 0;
 
     function computerPlay() {
-        const picks = ["Rock", "Paper", "Scissors"];
+        const picks = ["rock", "paper", "scissors"];
         let randomPick = picks[Math.floor(Math.random() * picks.length)];
-        return randomPick.toLowerCase();
+        return randomPick;
     }
 
     function playRound(playerSelection, computerSelection) {
-        if (playerSelection == "Rock" && computerSelection == "Scissors") {
+        if (playerSelection == "rock" && computerSelection == "scissors") {
             ++playerWin;
             console.log(`WIN! Player picked ${playerSelection} and CPU picked ${computerSelection}`);     
-        }   else if (playerSelection == "Scissors" && computerSelection == "Paper") {
+        }   else if (playerSelection == "scissors" && computerSelection == "paper") {
             ++playerWin;
             console.log(`WIN! Player picked ${playerSelection} and CPU picked ${computerSelection}`);
-        }   else if (playerSelection == "Paper" && computerSelection == "Rock") {
+        }   else if (playerSelection == "paper" && computerSelection == "rock") {
             ++playerWin;
             console.log(`WIN! Player picked ${playerSelection} and CPU picked ${computerSelection}`);
         }   else if (playerSelection == computerSelection) {
@@ -32,8 +32,8 @@
             const computerSelection = computerPlay();
             if (rounds < 5 ){
                 playRound(playerSelection, computerSelection);
-                console.log(`Player score: ${playerWin}`);
-                console.log(`Computer score: ${cpuWin}`);
+                console.log(`Current Player score: ${playerWin}`);
+                console.log(`Current Computer score: ${cpuWin}`);
             }
         }
     }

@@ -1,9 +1,5 @@
 <script>
 
-    const cpuSelection = computerPlay();
-    const playerSelection = prompt(("Pick your hand: "));
-    let playerWin = 0;
-
     function computerPlay() {
         const picks = ["Rock", "Paper", "Scissors"];
         let randomPick = picks[Math.floor(Math.random() * picks.length)];
@@ -11,29 +7,30 @@
     }
 
     function playRound(playerSelection, computerSelection) {
-        if (playerSelection == "Rock" && cpuSelection == "Scissors") {
-            ++playerWin;
-            console.log(`WIN! Player picked ${playerSelection} and CPU picked ${cpuSelection}`);
-        }   else if (playerSelection == "Scissors" && cpuSelection == "Paper") {
-            console.log(`WIN! Player picked ${playerSelection} and CPU picked ${cpuSelection}`);
-            ++playerWin;
-        }   else if (playerSelection == "Paper" && cpuSelection == "Rock") {
-            console.log(`WIN! Player picked ${playerSelection} and CPU picked ${cpuSelection}`);
-            ++playerWin;
-        }   else if (playerSelection === cpuSelection) {
-            console.log(`Draw! Player picked ${playerSelection} and CPU picked ${cpuSelection}`);
+        if (playerSelection == "Rock" && computerSelection == "Scissors") {
+            console.log(`WIN! Player picked ${playerSelection} and CPU picked ${computerSelection}`);     
+        }   else if (playerSelection == "Scissors" && computerSelection == "Paper") {
+            console.log(`WIN! Player picked ${playerSelection} and CPU picked ${computerSelection}`);
+        }   else if (playerSelection == "Paper" && computerSelection == "Rock") {
+            console.log(`WIN! Player picked ${playerSelection} and CPU picked ${computerSelection}`);
+        }   else if (playerSelection === computerSelection) {
+            console.log(`Draw! Player picked ${playerSelection} and CPU picked ${computerSelection}`);
         }   else {
-            --playerWin;
-            console.log(`Lost! Player picked ${playerSelection} and CPU picked ${cpuSelection}`);
+            console.log(`Lost! Player picked ${playerSelection} and CPU picked ${computerSelection}`);
         }
-        console.log(playerWin);
-    }   
-    playRound(playerSelection, cpuSelection);
+    } 
 
     function game() {
-
-
+        for (let rounds = 0; rounds < 5; rounds++) {
+            let computerSelection = computerPlay();
+            const playerSelection = prompt("Pick your hand: ");
+            if (rounds < 5 ){
+                playRound(playerSelection, computerSelection);
+            }
+        }
     }
+
+    game();
 
 </script>
 

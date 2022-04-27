@@ -3,6 +3,7 @@ let playerWin = 0;
 const playerRock = document.querySelector("#buttonRock");
 const playerPaper = document.querySelector("#buttonPaper");
 const playerScissors = document.querySelector("#buttonScissors");
+const results = document.querySelector("#resultDiv");
 
 function computerPlay() {
   const picks = ["rock", "paper", "scissors"];
@@ -23,35 +24,31 @@ function start() {
 }
 
 function playRound(pChoice) {
-  playerSelection = pChoice;
-  computerSelection = computerPlay();
+  const playerSelection = pChoice;
+  const computerSelection = computerPlay();
 
   if (playerSelection === "rock" && computerSelection === "scissors") {
     ++playerWin;
+    results.textContent = `Current score: \nPlayer: ${playerWin} - ${cpuWin} CPU`;
     console.log(`WIN! Player picked ${playerSelection} and CPU picked ${computerSelection}`);
   } else if (playerSelection === "scissors" && computerSelection === "paper") {
     ++playerWin;
+    results.textContent = `Current score: \nPlayer: ${playerWin} - ${cpuWin} CPU`;
     console.log(`WIN! Player picked ${playerSelection} and CPU picked ${computerSelection}`);
   } else if (playerSelection === "paper" && computerSelection === "rock") {
     ++playerWin;
+    results.textContent = `Current score: \nPlayer: ${playerWin} - ${cpuWin} CPU`;
     console.log(`WIN! Player picked ${playerSelection} and CPU picked ${computerSelection}`);
   } else if (playerSelection === computerSelection) {
     console.log(`Draw! Player picked ${playerSelection} and CPU picked ${computerSelection}`);
   } else {
     ++cpuWin;
+    results.textContent = `Current score: \nPlayer: ${playerWin} - ${cpuWin} CPU`;
     console.log(`Lost! Player picked ${playerSelection} and CPU picked ${computerSelection}`);
   }
-  console.log(`Current Player score: ${playerWin}`);
-  console.log(`Current Computer score: ${cpuWin}`);
 }
 
 start();
-
-/* const changeScore = () => {
-  const pScore = document.querySelector(".playerScore");
-  pScore.textContent = "test";
-}; */
-
 /* if (playerWin > cpuWin) {
   console.log("You won! POG");
 } else {

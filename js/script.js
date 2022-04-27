@@ -1,5 +1,8 @@
 let cpuWin = 0;
 let playerWin = 0;
+const playerRock = document.querySelector("#buttonRock");
+const playerPaper = document.querySelector("#buttonPaper");
+const playerScissors = document.querySelector("#buttonScissors");
 
 function computerPlay() {
   const picks = ["rock", "paper", "scissors"];
@@ -7,7 +10,22 @@ function computerPlay() {
   return randomPick;
 }
 
-function playRound(playerSelection, computerSelection) {
+function start() {
+  playerRock.addEventListener("click", () => {
+    playRound("rock");
+  });
+  playerPaper.addEventListener("click", () => {
+    playRound("paper");
+  });
+  playerScissors.addEventListener("click", () => {
+    playRound("scissors");
+  });
+}
+
+function playRound(pChoice) {
+  playerSelection = pChoice;
+  computerSelection = computerPlay();
+
   if (playerSelection === "rock" && computerSelection === "scissors") {
     ++playerWin;
     console.log(`WIN! Player picked ${playerSelection} and CPU picked ${computerSelection}`);
@@ -23,24 +41,20 @@ function playRound(playerSelection, computerSelection) {
     ++cpuWin;
     console.log(`Lost! Player picked ${playerSelection} and CPU picked ${computerSelection}`);
   }
+  console.log(`Current Player score: ${playerWin}`);
+  console.log(`Current Computer score: ${cpuWin}`);
 }
 
-function game() {
-  for (let rounds = 0; rounds < 5; rounds++) {
-    const playerSelection = prompt("Make your pick: ").toLowerCase();
-    const computerSelection = computerPlay();
-    if (rounds < 5) {
-      playRound(playerSelection, computerSelection);
-      console.log(`Current Player score: ${playerWin}`);
-      console.log(`Current Computer score: ${cpuWin}`);
-    }
-  }
-}
+start();
 
-game();
+/* const changeScore = () => {
+  const pScore = document.querySelector(".playerScore");
+  pScore.textContent = "test";
+}; */
 
-if (playerWin > cpuWin) {
+/* if (playerWin > cpuWin) {
   console.log("You won! POG");
 } else {
   console.log("Looks like you lost lmao");
 }
+ */

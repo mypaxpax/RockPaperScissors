@@ -1,5 +1,6 @@
 let cpuWin = 0;
 let playerWin = 0;
+
 const playerRock = document.querySelector("#buttonRock");
 const playerPaper = document.querySelector("#buttonPaper");
 const playerScissors = document.querySelector("#buttonScissors");
@@ -27,31 +28,30 @@ function playRound(pChoice) {
   const playerSelection = pChoice;
   const computerSelection = computerPlay();
 
-  if (playerSelection === "rock" && computerSelection === "scissors") {
-    ++playerWin;
-    results.textContent = `Current score: \nPlayer: ${playerWin} - ${cpuWin} CPU`;
-    console.log(`WIN! Player picked ${playerSelection} and CPU picked ${computerSelection}`);
-  } else if (playerSelection === "scissors" && computerSelection === "paper") {
-    ++playerWin;
-    results.textContent = `Current score: \nPlayer: ${playerWin} - ${cpuWin} CPU`;
-    console.log(`WIN! Player picked ${playerSelection} and CPU picked ${computerSelection}`);
-  } else if (playerSelection === "paper" && computerSelection === "rock") {
-    ++playerWin;
-    results.textContent = `Current score: \nPlayer: ${playerWin} - ${cpuWin} CPU`;
-    console.log(`WIN! Player picked ${playerSelection} and CPU picked ${computerSelection}`);
-  } else if (playerSelection === computerSelection) {
-    console.log(`Draw! Player picked ${playerSelection} and CPU picked ${computerSelection}`);
-  } else {
-    ++cpuWin;
-    results.textContent = `Current score: \nPlayer: ${playerWin} - ${cpuWin} CPU`;
-    console.log(`Lost! Player picked ${playerSelection} and CPU picked ${computerSelection}`);
+  switch (playerSelection + computerSelection) {
+    case "rockscissors":
+    case "paperrock":
+    case "scissorspaper":
+      ++playerWin;
+      results.textContent = `Current score: Player: ${playerWin} - ${cpuWin} CPU`;
+      console.log(`WIN! Player picked ${playerSelection} and CPU picked ${computerSelection}`);
+      break;
+
+    case "rockpaper":
+    case "paperscissors":
+    case "scissorsrock":
+      ++cpuWin;
+      results.textContent = `Current score: Player: ${playerWin} - ${cpuWin} CPU`;
+      console.log(`Lost! Player picked ${playerSelection} and CPU picked ${computerSelection}`);
+      break;
+
+    case "rockrock":
+    case "paperpaper":
+    case "scissorsscissors":
+      console.log(`Draw! Player picked ${playerSelection} and CPU picked ${computerSelection}`);
+      break;
+
+    default:
   }
 }
-
 start();
-/* if (playerWin > cpuWin) {
-  console.log("You won! POG");
-} else {
-  console.log("Looks like you lost lmao");
-}
- */

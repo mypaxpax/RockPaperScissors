@@ -7,8 +7,9 @@ const replay = document.querySelector("#buttonReplay");
 const playerRock = document.querySelector("#buttonRock");
 const playerPaper = document.querySelector("#buttonPaper");
 const playerScissors = document.querySelector("#buttonScissors");
-const results = document.querySelector("#resultDiv");
-results.textContent = `Current score: Player: ${playerScore} - ${cpuScore} CPU`;
+const score = document.querySelector("#scoreDiv");
+const gamePicks = document.querySelector("p.gamePicks");
+score.textContent = `Current score: Player: ${playerScore} - ${cpuScore} CPU`;
 
 // refresh the page to start new game.
 replay.addEventListener("click", () => {
@@ -30,30 +31,35 @@ function hideButtons() {
   buttons[3].style.display = "none";
 }
 
+// checks score of player +1 if player wins
+// if player got 5 points, call hideButtons() function.
 function winner() {
   if (playerScore < 5 && cpuScore < 5) {
     ++playerScore;
-    results.textContent = `Current score: Player: ${playerScore} - ${cpuScore} CPU`;
-    console.log(`Player picked ${playerSelection} and CPU picked ${computerSelection}`);
+    score.textContent = `Current score: Player: ${playerScore} - ${cpuScore} CPU`;
+    gamePicks.textContent = `Player picked ${playerSelection} and CPU picked ${computerSelection}`;
   } if (playerScore === 5 && cpuScore < 5) {
     console.log("Player wins!");
     hideButtons();
   }
 }
 
+// checks score of CPU and adds +1 if it wins
+// if CPU got 5 points, call hideButtons() function.
 function loser() {
   if (playerScore < 5 && cpuScore < 5) {
     ++cpuScore;
-    results.textContent = `Current score: Player: ${playerScore} - ${cpuScore} CPU`;
-    console.log(`Lost! Player picked ${playerSelection} and CPU picked ${computerSelection}`);
+    score.textContent = `Current score: Player: ${playerScore} - ${cpuScore} CPU`;
+    gamePicks.textContent = `Player picked ${playerSelection} and CPU picked ${computerSelection}`;
   } if (playerScore < 5 && cpuScore === 5) {
     console.log("CPU wins!");
     hideButtons();
   }
 }
 
+// if player and CPU picks the same.
 function draw() {
-  console.log(`Draw! Player picked ${playerSelection} and CPU picked ${computerSelection}`);
+  gamePicks.textContent = `Player picked ${playerSelection} and CPU picked ${computerSelection}`;
 }
 
 // Takes the input from start() function buttons and add it as playerChoices.

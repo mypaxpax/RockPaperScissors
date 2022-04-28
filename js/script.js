@@ -2,14 +2,28 @@ let cpuScore = 0;
 let playerScore = 0;
 
 // Pick the elements from the html and assign them to variable.
-const buttons = document.querySelector("#buttons").children;
+const buttons = document.querySelector("#rps").children;
 const replay = document.querySelector("#buttonReplay");
-const playerRock = document.querySelector("#buttonRock");
-const playerPaper = document.querySelector("#buttonPaper");
-const playerScissors = document.querySelector("#buttonScissors");
+const playerRock = document.querySelector("#rock");
+const playerPaper = document.querySelector("#paper");
+const playerScissors = document.querySelector("#scissors");
 const score = document.querySelector("#scoreDiv");
 const gamePicks = document.querySelector("p.gamePicks");
-score.textContent = `Current score: Player: ${playerScore} - ${cpuScore} CPU`;
+const endGame = document.querySelector(".endGameMessage");
+
+// function to show the winner - takes playername + win/loss.
+// changes the display from none to block, making it visible.
+function finish(playerName, status) {
+  endGame.textContent = `${playerName} ${status}`;
+  endGame.style.display = "block";
+}
+
+// score text
+const currentScore = () => {
+  score.textContent = `Player: ${playerScore} - ${cpuScore} CPU`;
+};
+
+currentScore();
 
 // refresh the page to start new game.
 replay.addEventListener("click", () => {
@@ -26,9 +40,9 @@ function computerPlay() {
 // Hides rock, paper, scissors buttons and leave "replay"
 // as the only button left.
 function hideButtons() {
+  buttons[0].style.display = "none";
   buttons[1].style.display = "none";
   buttons[2].style.display = "none";
-  buttons[3].style.display = "none";
 }
 
 // checks score of player +1 if player wins
@@ -36,10 +50,10 @@ function hideButtons() {
 function winner() {
   if (playerScore < 5 && cpuScore < 5) {
     ++playerScore;
-    score.textContent = `Current score: Player: ${playerScore} - ${cpuScore} CPU`;
+    currentScore();
     gamePicks.textContent = `Player picked ${playerSelection} and CPU picked ${computerSelection}`;
   } if (playerScore === 5 && cpuScore < 5) {
-    console.log("Player wins!");
+    finish("Player", "Won");
     hideButtons();
   }
 }
@@ -49,17 +63,17 @@ function winner() {
 function loser() {
   if (playerScore < 5 && cpuScore < 5) {
     ++cpuScore;
-    score.textContent = `Current score: Player: ${playerScore} - ${cpuScore} CPU`;
+    currentScore();
     gamePicks.textContent = `Player picked ${playerSelection} and CPU picked ${computerSelection}`;
   } if (playerScore < 5 && cpuScore === 5) {
-    console.log("CPU wins!");
+    finish("CPU", "Won");
     hideButtons();
   }
 }
 
 // if player and CPU picks the same.
 function draw() {
-  gamePicks.textContent = `Player picked ${playerSelection} and CPU picked ${computerSelection}`;
+  gamePicks.textContent = `DRAW Player picked ${playerSelection} and CPU picked ${computerSelection}`;
 }
 
 // Takes the input from start() function buttons and add it as playerChoices.
@@ -105,5 +119,7 @@ function start() {
     playRound("scissors");
   });
 }
+
+currentScore();
 
 start();

@@ -2,10 +2,11 @@
 
 body {
     font-family: Roboto, sans-serif;
-    margin: 20vh 10vh;
+    margin: 3em 15em; 
 }
 .container {
-    padding: 3em;
+
+    padding: 4em;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -14,15 +15,17 @@ body {
 }
 
 #buttons {
-    align-self: center;
-    padding: 0px 10px;
+    border-style:none;
 }
 
 #scoreDiv {
     align-self: center;
 }
 .gamePicks {
-    align-self: center;
     font-size: 14px;
     font-weight: 700;
+}
+
+img {
+
 }

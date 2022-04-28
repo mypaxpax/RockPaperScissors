@@ -3,6 +3,7 @@
 body {
     font-family: Roboto, sans-serif;
     margin: 3em 15em; 
+    background-color:#004463;
 }
 .container {
 
@@ -11,7 +12,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color:steelblue;
+    background-color: steelblue;
 }
 
 #buttons {
@@ -20,12 +21,17 @@ body {
 
 #scoreDiv {
     align-self: center;
+    font-size: 2em;
+    font-weight: 700;
+
 }
 .gamePicks {
     font-size: 14px;
     font-weight: 700;
 }
 
-img {
-
+.endGameMessage {
+    font-size: 3em;
+    font-weight: 900;
+    display: none;
 }

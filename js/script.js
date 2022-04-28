@@ -2,11 +2,18 @@ let cpuScore = 0;
 let playerScore = 0;
 
 // Pick the elements from the html and assign them to variable.
+const buttons = document.querySelector("#buttons").children;
+const replay = document.querySelector("#buttonReplay");
 const playerRock = document.querySelector("#buttonRock");
 const playerPaper = document.querySelector("#buttonPaper");
 const playerScissors = document.querySelector("#buttonScissors");
 const results = document.querySelector("#resultDiv");
 results.textContent = `Current score: Player: ${playerScore} - ${cpuScore} CPU`;
+
+// refresh the page to start new game.
+replay.addEventListener("click", () => {
+  window.location.reload();
+});
 
 // Random pick 1 choice from an array consisting of 3 possible picks.
 function computerPlay() {
@@ -15,13 +22,22 @@ function computerPlay() {
   return cpuPick;
 }
 
+// Hides rock, paper, scissors buttons and leave "replay"
+// as the only button left.
+function hideButtons() {
+  buttons[1].style.display = "none";
+  buttons[2].style.display = "none";
+  buttons[3].style.display = "none";
+}
+
 function winner() {
   if (playerScore < 5 && cpuScore < 5) {
     ++playerScore;
     results.textContent = `Current score: Player: ${playerScore} - ${cpuScore} CPU`;
     console.log(`Player picked ${playerSelection} and CPU picked ${computerSelection}`);
   } if (playerScore === 5 && cpuScore < 5) {
-    console.log("WIN");
+    console.log("Player wins!");
+    hideButtons();
   }
 }
 
@@ -31,7 +47,8 @@ function loser() {
     results.textContent = `Current score: Player: ${playerScore} - ${cpuScore} CPU`;
     console.log(`Lost! Player picked ${playerSelection} and CPU picked ${computerSelection}`);
   } if (playerScore < 5 && cpuScore === 5) {
-    console.log("Lost");
+    console.log("CPU wins!");
+    hideButtons();
   }
 }
 

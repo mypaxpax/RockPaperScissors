@@ -13,10 +13,14 @@ const cpuPick = document.querySelector(".rightBox").children;
 let playerScore = 0;
 let computerScore = 0;
 
+//  Current score of the game.
+
 currentScore = () => {
   Pscore.textContent = `${playerScore}`;
   Cscore.textContent = `${computerScore}`;
 };
+
+// array with possible selections for the computer and randomize a pick.
 
 computerSelections = () => {
   const cpuCanPick = ["bear", "cowboy", "ninja"];
@@ -33,6 +37,8 @@ computerSelections = () => {
   }
   return computerPick;
 };
+
+// Check the combinations and calls relevant outcome (winner, loser, draw) functions.
 
 function playGame(pChoice) {
   playerSelection = pChoice;
@@ -62,6 +68,8 @@ function playGame(pChoice) {
   }
 }
 
+// adds a point the player if wins and checks if player got more than 5 points.
+
 winner = () => {
   if (playerScore < 5 && computerScore < 5) {
     ++playerScore;
@@ -84,6 +92,9 @@ loser = () => {
   }
 };
 
+// Hides the possible picks after either player of computer go 5 points -
+// - and change the style of "replay" to be shown.
+
 hideButtons = () => {
   possiblePicks[0].style.display = "none";
   possiblePicks[1].style.display = "none";
@@ -91,17 +102,25 @@ hideButtons = () => {
   replay.style.display = "block";
 };
 
+// if the outcome of both picks are the same, we show the draw text.
+
 draw = () => {
   combatText.textContent = `It's a draw! Looks like you both picked ${playerSelection}'s`;
 };
+
+// After a winner is found, we change the content of end Battle div.
 
 finish = (playerName, status) => {
   endBattle.textContent = `We got a winner! ${playerName} ${status}`;
 };
 
+// replay button that reloads site for a new game.
+
 replay.addEventListener("click", () => {
   location.reload();
 });
+
+// Detects what picks player chose and returns playgame with the selected.
 
 gameStart = () => {
   playerBear.addEventListener("click", () => {

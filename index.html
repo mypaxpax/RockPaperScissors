@@ -1,26 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <link rel="stylesheet" href="./styles/style.css">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rock < Paper < Scissors</title>
+    <title>Bear vs. Ninja vs. Cowboy</title>
 </head>
-
 <body>
-    <div class="container">
-        <div id="scoreDiv"></div>
-        <div id="rps">
-            <img id="rock" src="images/rock.png" alt="Pick rock">
-            <img id="paper" src="images/paper.png" alt="Pick paper">
-            <img id="scissors" src="images/scissors.png" alt="Pick scissors">
+    <h1 style="text-align: center">Pick a fighter</h1>
+    <div class="mainContent">
+        <div class="infoBox">
+            <p>Bear beats Ninja! <strong>|</strong> Ninja beats Cowboy! <strong>|</strong> Cowboy beats Bear!</p>
+        </div> 
+        <div id="fighterBox">
+            <img id="bear" class="grey" src="./images/bear.png">
+            <img id="ninja" class="grey" src="./images/ninja.png">
+            <img id="cowboy" class="grey" src="./images/cowboy.png">
+            <button class="replay">Play again!</button>
         </div>
-        <p class="endGameMessage"></p>
-        <p class="gamePicks"></p>
-        <button id="buttonReplay">Replay!</button>
+        <h1>BATTLE ARENA</h1>
+        <div class="container">
+            <div class="leftBox">
+                <p style="font-weight: 900;">Player</p>
+                <img src="">
+                <p class="Pscore">0</p>
+            </div>
+            <div class="middleBox">
+                <h1 class="endBattle"></h1>
+                <p id="combatText">
+                    Prepare for battle!
+                </p>
+            </div>
+            <div class="rightBox">
+                <p style="font-weight: 900;">Computer</p>
+                <img src="">
+                <p class="Cscore">0</p>
+            </div>
+        </div>   
     </div>
 </body>
-<script src="js/script.js"></script>
+<script src="./js/script.js"></script>
 </html>

@@ -1,37 +1,97 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap');
+
+* {
+    line-height: 1em;
+}
+
+.grey {
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+.grey:hover {
+    -webkit-filter: grayscale(0%);
+    filter: grayscale(0%);
+    transform: scale(1.1);
+}
+
+.Pscore,
+.Cscore {
+    font-weight: 900;
+    font-size: 1.8em;
+}
+
+.endBattle {
+    font-weight: 900;
+    font-size: 1.8em;
+}
+
 
 body {
-    font-family: Roboto, sans-serif;
-    margin: 3em 15em; 
-    background-color:#004463;
-}
-.container {
+    /*background-color:#53a8b6;*/
+    font-family: 'Nanum Pen Script', cursive;
+    margin: 0px;
+    background-color: #eeebeb;
 
-    padding: 4em;
+}
+
+.mainContent {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: steelblue;
+    max-width: 700px;
+    margin: 30px auto;
+    text-align: center;
 }
 
-#buttons {
-    border-style:none;
+.container {
+    display: flex;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;}
+
+.leftBox {
+    text-align: center;
+    width: 200px;
+    border-right: 3px solid #5e5e5e;
 }
 
-#scoreDiv {
+.middleBox {
+    text-align: center;
     align-self: center;
+    flex: 0 0 350px;
+}
+
+.rightBox {
+    text-align: center;
+    width: 200px;
+    border-left: 3px solid #5e5e5e;
+
+}
+
+#combatText {
     font-size: 2em;
-    font-weight: 700;
-
-}
-.gamePicks {
-    font-size: 14px;
-    font-weight: 700;
+    padding: 0px 10px;
 }
 
-.endGameMessage {
-    font-size: 3em;
-    font-weight: 900;
+.infoBox {
+    text-align: center;
+    font-size: 2em;
+}
+
+.replay {
+    font-family: 'Nanum Pen Script', cursive;
+    width: 100px;
+    height: 50px;
+    font-size: 20px;
+    border: 2px solid #5e5e5e;
     display: none;
 }
+
+#fighterBox {
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 50px;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;}

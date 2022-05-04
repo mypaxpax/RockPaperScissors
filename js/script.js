@@ -26,13 +26,10 @@ computerSelections = () => {
   const cpuCanPick = ["bear", "cowboy", "ninja"];
   const computerPick = cpuCanPick[Math.floor(Math.random() * cpuCanPick.length)];
   if (computerPick === "bear") {
-    console.log(computerPick);
     cpuPick[1].src = "./images/bear.png";
   } else if (computerPick === "cowboy") {
-    console.log(computerPick);
     cpuPick[1].src = "./images/cowboy.png";
   } else if (computerPick === "ninja") {
-    console.log(computerPick);
     cpuPick[1].src = "./images/ninja.png";
   }
   return computerPick;

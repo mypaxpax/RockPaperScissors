@@ -13,7 +13,7 @@ const cpuPick = document.querySelector(".rightBox").children;
 let playerScore = 0;
 let computerScore = 0;
 
-//  Current score of the game.
+// Current score of the game.
 
 currentScore = () => {
   Pscore.textContent = `${playerScore}`;
